@@ -1,0 +1,12 @@
+{
+  "conversation": [
+    {
+      "role": "user",
+      "text": "I spent 200 on matatu and 150 on lunch"
+    },
+    {
+      "role": "coach",
+      "text": "Got it! Tracked KES 200 for matatu under transport and KES 150 for lunch under food. Great job keeping tabs on your daily expenses! What else have you spent today?"
+    }
+  ]
+}

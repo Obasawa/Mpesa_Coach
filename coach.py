@@ -3,6 +3,7 @@ from dotenv import load_dotenv
 from google import genai
 from google.genai import types
 import json
+from datetime import datetime
 
 load_dotenv()
 api_key=os.getenv("API_KEY")
@@ -59,5 +60,14 @@ while True:
         print("Sorry, I could not reach the AI right now. Please try again.")
         print("Details:", error)
         history.pop()
+        
+# --- SECTION 6: Save the session ---
+if session_log:
+    stamp = datetime.now().strftime("%Y-%m-%d_%H-%M")
+    os.makedirs("sessions", exist_ok=True)
+    filename = "sessions/session_" + stamp + ".json"
+    with open(filename, "w") as f:
+        json.dump({"conversation": session_log}, f, indent=2)
+    print("Session saved to", filename)
         
 
