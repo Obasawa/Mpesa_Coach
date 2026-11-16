@@ -1,0 +1,12 @@
+{
+  "conversation": [
+    {
+      "role": "user",
+      "text": "I spent 200 on lunch"
+    },
+    {
+      "role": "coach",
+      "text": "Got it! I've tracked KES 200 for your lunch under food. Great job staying on top of your expenses! What else did you spend today?"
+    }
+  ]
+}

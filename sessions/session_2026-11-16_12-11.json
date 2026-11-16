@@ -1,0 +1,12 @@
+{
+  "conversation": [
+    {
+      "role": "user",
+      "text": "2"
+    },
+    {
+      "role": "coach",
+      "text": "Hey! Did you spend KES 2? Please tell me what item you bought so I can track it for you in the right category!"
+    }
+  ]
+}
