@@ -1,8 +1,12 @@
 {
-  "reply": "Got it! Tracked KES 200 for matatu under transport and KES 150 for lunch under food. Great job keeping tabs on your daily expenses! What else have you spent today?",
-  "total_spent": 350,
+  "reply": "Hey there! Did you spend 3 KES? Please tell me what item or service you spent it on so I can categorize it for you!",
+  "total_spent": 0,
   "totals": {
-    "transport": 200,
-    "food": 150
+    "transport": 0,
+    "food": 0,
+    "airtime": 0,
+    "rent": 0,
+    "shopping": 0,
+    "other": 0
   }
 }
