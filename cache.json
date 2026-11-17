@@ -1,7 +1,7 @@
 {
-  "reply": "Nimepata! I've recorded KES 200 under transport for your matatu fare. Keep tracking to stay in control of your cash!",
+  "reply": "Got it! Added KES 200 to your food budget. Tracking your daily meals is a great habit. What else have you spent today?",
   "total_spent": 200,
   "totals": {
-    "transport": 200
+    "food": 200
   }
 }
