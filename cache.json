@@ -1,5 +1,5 @@
 {
-  "reply": "Hey there! Did you spend 3 KES? Please tell me what item or service you spent it on so I can categorize it for you!",
+  "reply": "Is that 3 KES? Please let me know what item or service you spent it on so I can add it to your totals!",
   "total_spent": 0,
   "totals": {
     "transport": 0,
