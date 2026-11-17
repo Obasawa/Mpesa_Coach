@@ -60,15 +60,7 @@ def new_session():
         except Exception as error:
             print("Sorry, I could not reach the AI right now. Please try again.")
             print("Details:", error)
-            
-            # Cannot be found session
-        except ValueError:  #when the user types something that isn't a number
-            print("Please type a number.")
-        except FileNotFoundError: #Happens if the file was deleted
-            print("That session file could not be found.")
-        except(json.JSONDecodeError, KeyError): # If using a corrupted file
-            print("That session file is damaged and cannot be read.")   
-            
+               
             history.pop()
             
     # --- SECTION 6: Save the session ---
@@ -92,17 +84,23 @@ def open_past_session():
     print("\nSaved sessions:")
     for number, name in enumerate(files, start=1):
         print(number, "-", name)
-        choice=input("Enter the number of the session to open:").strip
-        try:
-            index=int(choice) - 1
-            if index < 0 or index >= len(files):
-                print("That number is not in the list.")
-                return
-            with open("session/") + files[index], "r" as f:
-                saved = json.load(f)
-            print("\n---" + files[index] + "---")
-            for entry in saved["conversation"]:
-                print(entry["role"] + ": " + entry ["text"])
+    choice=input("Enter the number of the session to open:").strip()
+    try:
+        index=int(choice) - 1
+        if index < 0 or index >= len(files):
+            print("That number is not in the list.")
+            return
+        with open("sessions/" + files[index], "r") as f:
+            saved = json.load(f)
+        print("\n---" + files[index] + "---")
+        for entry in saved["conversation"]:
+            print(entry["role"] + ": " + entry ["text"])
+    except ValueError:
+        print("Please type a number.")
+    except FileNotFoundError:
+        print("That session file could not be found.")
+    except(json.JSONDecodeError, KeyError):
+        print("That session file is damaged and cannot be read.")
                 
 
 #Main Menu
