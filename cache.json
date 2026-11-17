@@ -1,12 +1,7 @@
 {
-  "reply": "Is that 3 KES? Please let me know what item or service you spent it on so I can add it to your totals!",
-  "total_spent": 0,
+  "reply": "Nimepata! I've recorded KES 200 under transport for your matatu fare. Keep tracking to stay in control of your cash!",
+  "total_spent": 200,
   "totals": {
-    "transport": 0,
-    "food": 0,
-    "airtime": 0,
-    "rent": 0,
-    "shopping": 0,
-    "other": 0
+    "transport": 200
   }
 }

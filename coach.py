@@ -22,8 +22,43 @@ CONSTRAINTS="Only talk about the user's spending. Never invent an amount the use
 OUTPUT = 'Reply ONLY with valid JSON and nothing else, with no markdown. Use exactly these field names and no others: "reply" (a short friendly message to the user), "total_spent" (a number: total KES spent so far in this conversation), "totals" (an object with each category and its running total, for example {"transport": 200, "food": 150}). Never leave a field empty.'
 
 SYSTEM_PROMPT = ROLE + "\n" + TASK + "\n" + CONTEXT + "\n" + CONSTRAINTS + "\n" + OUTPUT
+ 
+# Check the AI's JSON reply
+def check_reply(data):
+    if not isinstance(data, dict):
+        return False
+    reply=data.get("reply")
+    if not isinstance(reply,str) or reply.strip()== "":
+        return False
+    if not isinstance(data.get("total_spent"), (int, float)):
+        return False
+    if not isinstance(data.get("totals"), dict):
+        return False
+    return True
 
-#Conversation Memory
+#Ask Gemini, check the reply, retry once
+def get_valid_reply(history):
+    for attempt in range(2):
+        response = client.models.generate_content(
+            model="gemini-3.8-flash",
+            contents=history,
+            config=types.GenerateContentConfig(
+                system_instruction=SYSTEM_PROMPT,
+                response_mime_type="application/json")
+            )
+            
+            
+        try:
+            data=json.loads(response.text)
+        except json.JSONDecodeError:
+            data = None
+        if data is not None and check_reply(data):
+            return data, response.text
+        
+    return None, None
+
+
+# Conversation Memory
 def new_session():
     history=[]
     session_log=[]
@@ -37,24 +72,18 @@ def new_session():
             break
         history.append(types.Content(role="user", parts=[types.Part(text=user_text)])) 
         session_log.append({"role": "user", "text": user_text}) 
+        
+        #Storing Gemini reply
         try:
-            
-
-            response=client.models.generate_content(
-                
-                model="gemini-3.5-flash",
-                contents=history,
-                config=types.GenerateContentConfig(
-                    system_instruction=SYSTEM_PROMPT,
-                    response_mime_type="application/json")
-
-            )
-
-            data=json.loads(response.text)
+            data, raw = get_valid_reply(history)
+            if data is None: 
+                print("Sorry, I could not get a clear answer. Please try again.")
+                history.pop()
+                continue
             print(data["reply"])
             
             session_log.append({"role": "coach", "text": data["reply"]})   # <-- ADD (8 spaces in)
-            history.append(types.Content(role="model", parts=[types.Part(text=response.text)]))
+            history.append(types.Content(role="model", parts=[types.Part(text=raw)]))
             with open("cache.json", "w") as f:
                 json.dump(data, f, indent=2)
         except Exception as error:
