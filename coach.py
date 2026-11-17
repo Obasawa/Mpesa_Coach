@@ -64,6 +64,39 @@ def get_valid_reply(history):
         
     return None, None
 
+# Check the summary has all the fields we asked for
+def check_summary(data):
+    if not isinstance(data, dict):
+        return False
+    text = data.get("summary")
+    if not isinstance(text, str) or text.strip() =="":
+        return False
+    if not isinstance(data.get("breakdown"), dict):
+        return False
+    if not isinstance(data.get("total_spent"), (int, float)):
+        return False
+    tips = data.get("ways_to_save")
+    return isinstance(tips, list) and len(tips) == 3
+
+#Final AI call: Summarise the whole conversation, retry once
+def make_summary(history):
+    ask = types.concept(role="user", parts=[types.Part(text="The session has ended. Write the summary now.")])
+    for attempt in range (2):
+        try:
+            response = client.models.generate_content(
+                model="gemini-3.5-flash",
+                contents=history + [ask],
+                config=types.GenerateContentConfig(
+                    system_instruction=SUMMARY_PROMPT,
+                    response_mime_type="application/json")
+                )
+            data = json.loads(response.text)
+        except Exception:
+            data = None
+        if check_summary(data):
+            return data
+        return None
+
 
 # Conversation Memory
 def new_session():
@@ -159,7 +192,3 @@ def main_menu():
             print("Please choose 1, 2, or 3.")
             
 main_menu()
-        
-
-            
-
