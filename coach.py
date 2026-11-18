@@ -256,6 +256,8 @@ def main_menu():
         else:
             print("Please choose 1, 2, or 3.")
             
-main_menu()
+if __name__=="__main__":
+    main_menu()
+
 
 
