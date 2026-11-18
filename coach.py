@@ -4,6 +4,7 @@ from google import genai
 from google.genai import types
 import json
 from datetime import datetime
+from openai import OpenAI
 
 load_dotenv()
 api_key=os.getenv("API_KEY")
@@ -80,7 +81,7 @@ def check_summary(data):
 
 #Final AI call: Summarise the whole conversation, retry once
 def make_summary(history):
-    ask = types.concept(role="user", parts=[types.Part(text="The session has ended. Write the summary now.")])
+    ask = types.Content(role="user", parts=[types.Part(text="The session has ended. Write the summary now.")])
     for attempt in range (2):
         try:
             response = client.models.generate_content(
@@ -134,11 +135,24 @@ def new_session():
             
     # --- SECTION 6: Save the session ---
     if session_log:
+        print("writing your summary...")
+        summary = make_summary(history)
+        if summary is None:
+            print("Sorry, I could not create a summary this time.")
+        else:
+            print("\n---Session summary ---")
+            print("Total spent: KES", summary["total_spent"])
+            for category, amount in summary["breakdown"].items():
+                print("-", category + ":", amount)
+            print("Ways to save:")
+            for tip in summary["ways_to_save"]:
+                print("*", tip)
+        
         stamp = datetime.now().strftime("%Y-%m-%d_%H-%M")
         os.makedirs("sessions", exist_ok=True)
         filename = "sessions/session_" + stamp + ".json"
         with open(filename, "w") as f:
-            json.dump({"conversation": session_log}, f, indent=2)
+            json.dump({"conversation": session_log, "summary": summary}, f, indent=2)
         print("Session saved to", filename)
         
 #Opening a past session:
@@ -192,3 +206,5 @@ def main_menu():
             print("Please choose 1, 2, or 3.")
             
 main_menu()
+
+

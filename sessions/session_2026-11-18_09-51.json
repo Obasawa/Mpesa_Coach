@@ -1,0 +1,26 @@
+{
+  "conversation": [
+    {
+      "role": "user",
+      "text": "Hi, I spent 200 on matatu and 250 on airtime, 300 sent to my sister"
+    },
+    {
+      "role": "coach",
+      "text": "Habari! I've tracked that: KES 200 for matatu under transport, KES 250 for airtime, and KES 300 sent to your sister under other. You've spent KES 750 in total. Keep up the good habit of tracking!"
+    }
+  ],
+  "summary": {
+    "summary": "In this session, you spent a total of KES 750 across three categories. Your main expenses were sending money to your sister, purchasing airtime, and paying for matatu transport. Tracking these regular spending habits is a great step toward better financial management.",
+    "breakdown": {
+      "Transport": 200,
+      "Airtime": 250,
+      "Other": 300
+    },
+    "total_spent": 750,
+    "ways_to_save": [
+      "Buy weekly or monthly airtime bundles rather than daily top-ups to get more value for your money.",
+      "Travel during off-peak hours whenever possible to lower your daily matatu fares.",
+      "Set aside a fixed monthly budget for family support to manage transfers to your sister more predictably."
+    ]
+  }
+}
