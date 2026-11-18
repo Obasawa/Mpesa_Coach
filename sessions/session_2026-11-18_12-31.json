@@ -1,0 +1,24 @@
+{
+  "conversation": [
+    {
+      "role": "user",
+      "text": "I spent 200 on matatu"
+    },
+    {
+      "role": "coach",
+      "text": "Got it! Added KES 200 to transport. Tip: Fares often rise at peak hours and when it rains, so travelling a little earlier or later can cost less. Walk short distances when it is safe."
+    }
+  ],
+  "summary": {
+    "summary": "You tracked a total of KES 200 in this session, which was spent entirely on transport. Logging your daily matatu fares is a great way to stay on top of your commuting budget.",
+    "breakdown": {
+      "transport": 200
+    },
+    "total_spent": 200,
+    "ways_to_save": [
+      "Travel during off-peak hours to avoid surging matatu fares.",
+      "Walk safe, short distances between stages instead of taking a ride.",
+      "Explore commuter train options or shared rides if available along your regular route."
+    ]
+  }
+}

@@ -15,6 +15,7 @@ else:
     print("Key lost")
     
 client=genai.Client(api_key=api_key)
+MODEL_NAME = "gemini-3.8-flash"
 
 ROLE="You are Pesa Coach, a friendly money coach for young Kenyans."
 TASK="The user tells you what they spent, one or two items per message. Put each expense in a category (transport, food, airtime, rent, shopping, other), keep running totals by category, and answer questions about their spending"
@@ -48,10 +49,10 @@ def check_reply(data):
 def get_valid_reply(history, extra=""):
     for attempt in range(2):
         response = client.models.generate_content(
-            model="gemini-3.8-flash",
+            model=MODEL_NAME,
             contents=history,
             config=types.GenerateContentConfig(
-                system_instruction=SYSTEM_PROMPT,
+                system_instruction=SYSTEM_PROMPT + extra,
                 response_mime_type="application/json")
             )
             
@@ -85,7 +86,7 @@ def make_summary(history):
     for attempt in range (2):
         try:
             response = client.models.generate_content(
-                model="gemini-3.5-flash",
+                model=MODEL_NAME,
                 contents=history + [ask],
                 config=types.GenerateContentConfig(
                     system_instruction=SUMMARY_PROMPT,
@@ -158,7 +159,13 @@ def new_session():
         
         #Storing Gemini reply
         try:
-            data, raw = get_valid_reply(history)
+            tips = find_tips(user_text)
+            print("[Knowledge base] Tips used:", tips)
+            extra = ""
+            if tips:
+                extra = "\nHelpful saving tips you may use if they are relevant. Do not invent other tips:\n-" + "\n- ".join(tips)
+            data, raw = get_valid_reply(history, extra)
+
             if data is None: 
                 print("Sorry, I could not get a clear answer. Please try again.")
                 history.pop()
@@ -171,6 +178,7 @@ def new_session():
                 json.dump(data, f, indent=2)
         except Exception as error:
             print("Sorry, I could not reach the AI right now.so I am using your saved totals instead.")
+            print("Details:", error)
             print(offline_reply(user_text))
                
             history.pop()
@@ -183,6 +191,7 @@ def new_session():
             print("Sorry, I could not create a summary this time.")
         else:
             print("\n---Session summary ---")
+            print(summary["summary"])
             print("Total spent: KES", summary["total_spent"])
             for category, amount in summary["breakdown"].items():
                 print("-", category + ":", amount)

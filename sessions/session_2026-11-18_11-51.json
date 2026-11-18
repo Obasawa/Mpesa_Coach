@@ -1,0 +1,22 @@
+{
+  "conversation": [
+    {
+      "role": "user",
+      "text": "I spent 200 on matatu and 150 on lunch"
+    },
+    {
+      "role": "user",
+      "text": "how much have I spent on transport so far?"
+    }
+  ],
+  "summary": {
+    "summary": "You did not report any expenses during this session. Keeping track of your daily spending is a key step toward achieving your financial goals. Make sure to log your expenses next time to get a personalized breakdown.",
+    "breakdown": {},
+    "total_spent": 0,
+    "ways_to_save": [
+      "Track all daily M-Pesa transactions regularly to identify hidden spending habits.",
+      "Create a monthly budget before receiving income to allocate funds for essentials first.",
+      "Automate small savings into a local Money Market Fund to build an emergency fund."
+    ]
+  }
+}
