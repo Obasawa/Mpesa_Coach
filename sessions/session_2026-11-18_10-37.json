@@ -1,0 +1,17 @@
+{
+  "conversation": [
+    {
+      "role": "user",
+      "text": "I used 100 on matatu"
+    },
+    {
+      "role": "user",
+      "text": "what's my previous expense"
+    },
+    {
+      "role": "user",
+      "text": "ok"
+    }
+  ],
+  "summary": null
+}

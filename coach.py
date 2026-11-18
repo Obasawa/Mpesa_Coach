@@ -97,6 +97,21 @@ def make_summary(history):
         if check_summary(data):
             return data
         return None
+    
+# Offline fallback: answer from the saved cache when the AI cannot be reached
+def offline_reply(user_text):
+    try:
+        with open("cache.json", "r") as f:
+            cached = json.load(f)
+    except(FileNotFoundError, json.JSONDecodeError):
+        return"I am offline and have no saved totals yet. Please try again later."
+    text = user_text.lower()
+    if any(ch.isdigit() for ch in text):
+        return"I am offline, I can't record new expenses."
+    for category, amount in cached.get("totals", {}).items():
+        if category.lower() in text:
+            return"Offline, from your last saved totals: KES " + str(amount) + " on " + category + "."
+        return"Offline, from your last saved totals: KES " + str(cached.get("total_spent", 0)) + " in total."
 
 
 # Conversation Memory
@@ -128,8 +143,8 @@ def new_session():
             with open("cache.json", "w") as f:
                 json.dump(data, f, indent=2)
         except Exception as error:
-            print("Sorry, I could not reach the AI right now. Please try again.")
-            print("Details:", error)
+            print("Sorry, I could not reach the AI right now.so I am using your saved totals instead.")
+            print(offline_reply(user_text))
                
             history.pop()
             
