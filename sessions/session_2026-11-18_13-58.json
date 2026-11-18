@@ -1,0 +1,13 @@
+{
+  "conversation": [
+    {
+      "role": "user",
+      "text": "Hi, I pent 340 on Matatu and 300 on launch, 40 on breakfast. I gave Dad 10000 and sister 360"
+    },
+    {
+      "role": "coach",
+      "text": "Got it! I've recorded KES 340 for transport, KES 340 for food, and KES 10,360 for family (other). Your total spent is KES 11,040. Tip: Carrying lunch from home a few days a week usually costs less than buying it daily!"
+    }
+  ],
+  "summary": null
+}
