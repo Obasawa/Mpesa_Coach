@@ -1,0 +1,74 @@
+{
+  "conversation": [
+    {
+      "role": "user",
+      "text": "I spent 65 on bread, 39 on eggs and 100 on uber. 60 on airtime where I have bought it 3 times."
+    },
+    {
+      "role": "coach",
+      "text": "Got it: bread and eggs under food, Uber under transport, and 3 \u00d7 60 airtime = 180. If the 60 was the total airtime instead, tell me and I\u2019ll adjust."
+    },
+    {
+      "role": "user",
+      "text": "Give me saving tips"
+    },
+    {
+      "role": "coach",
+      "text": "Treat saving like a bill: on payday, move a small fixed amount to a separate savings place before spending. That way you save first, not whatever is left."
+    },
+    {
+      "role": "user",
+      "text": "ok"
+    },
+    {
+      "role": "coach",
+      "text": "Great. Keep logging your spends and I\u2019ll help you spot where to trim so saving gets easier."
+    },
+    {
+      "role": "user",
+      "text": "1000 on uber"
+    },
+    {
+      "role": "coach",
+      "text": "Added KES 1000 Uber to transport. Your transport is now the biggest category \u2014 worth watching if rides add up."
+    },
+    {
+      "role": "user",
+      "text": "what's the total?"
+    },
+    {
+      "role": "coach",
+      "text": "Your total spending so far is KES 1,384. Transport is KES 1,100, food KES 104, and airtime KES 180."
+    },
+    {
+      "role": "user",
+      "text": "what would you advice?"
+    },
+    {
+      "role": "coach",
+      "text": "Transport is eating most of your money (KES 1,100), mostly Uber. Try combining trips, using matatu sometimes, or setting a weekly ride budget. Also watch airtime: KES 180 already."
+    },
+    {
+      "role": "user",
+      "text": "thank you"
+    },
+    {
+      "role": "coach",
+      "text": "You're welcome! Keep logging every spend and I'll help you stay on track."
+    }
+  ],
+  "summary": {
+    "summary": "You spent KES 1,384 in this session, with transport taking the biggest share at KES 1,100. Food was KES 104 and airtime was KES 180. Uber is the main pressure point, so small changes there will save you the most.",
+    "breakdown": {
+      "transport": 1100,
+      "food": 104,
+      "airtime": 180
+    },
+    "total_spent": 1384,
+    "ways_to_save": [
+      "Cut Uber costs by combining trips, walking short distances, or taking a matatu sometimes, and set a weekly ride budget.",
+      "Reduce airtime spending by buying a bundle once instead of repeated KES 60 top-ups, and use WiFi where available.",
+      "Plan meals and buy bread and eggs in bulk or from cheaper local shops to keep food costs low."
+    ]
+  }
+}

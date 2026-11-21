@@ -1,0 +1,24 @@
+{
+  "conversation": [
+    {
+      "role": "user",
+      "text": "I spent 200 on Matatu"
+    },
+    {
+      "role": "coach",
+      "text": "Got it! I have recorded KES 200 for transport. Tip: Fares often rise at peak hours and when it rains, so travelling a little earlier or later can cost less. Walk short distances when it is safe."
+    }
+  ],
+  "summary": {
+    "summary": "During this session, you recorded spending a total of KES 200, which went entirely toward matatu fares. Consistently tracking even small daily expenses is a great habit for managing your money.",
+    "breakdown": {
+      "Transport": 200
+    },
+    "total_spent": 200,
+    "ways_to_save": [
+      "Travel slightly off-peak when possible to avoid rush-hour matatu price surges.",
+      "Walk short distances safely instead of taking matatus for brief trips.",
+      "Set aside a fixed weekly transport budget on M-Pesa to keep your daily fare spending in check."
+    ]
+  }
+}

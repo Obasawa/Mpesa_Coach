@@ -4,7 +4,10 @@ import json
 from coach import get_valid_reply, find_tips, offline_reply
 import os
 from datetime import datetime
-from coach import get_valid_reply, make_summary, find_tips, offline_reply
+from coach import get_valid_reply, make_summary
+from knowledge import find_tips
+from safeguards import offline_reply
+
 
 st.title("Pesa Coach")
 

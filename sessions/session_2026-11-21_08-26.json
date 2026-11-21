@@ -1,0 +1,24 @@
+{
+  "conversation": [
+    {
+      "role": "user",
+      "text": "I spent 100 on matatu"
+    },
+    {
+      "role": "coach",
+      "text": "Got it! I've noted KES 100 for your matatu ride under transport. Fares often rise at peak hours, so travelling a bit earlier or later can help you save!"
+    }
+  ],
+  "summary": {
+    "summary": "In this session, you logged a total of KES 100 spent on matatu fare under transport. Tracking your daily commuting costs is a great step toward managing your overall travel budget.",
+    "breakdown": {
+      "transport": 100
+    },
+    "total_spent": 100,
+    "ways_to_save": [
+      "Travel during off-peak hours when matatu fares drop significantly.",
+      "Walk short distances whenever possible instead of taking a matatu for just a stop or two.",
+      "Set aside a dedicated weekly transport budget on M-Pesa to prevent overspending on daily fares."
+    ]
+  }
+}

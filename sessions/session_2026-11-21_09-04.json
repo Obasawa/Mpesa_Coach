@@ -1,0 +1,24 @@
+{
+  "conversation": [
+    {
+      "role": "user",
+      "text": "I spent 200 on matatu"
+    },
+    {
+      "role": "coach",
+      "text": "Got it! I've logged KES 200 for transport. Remember, fares often rise at peak hours, so travelling a little earlier or later can cost less!"
+    }
+  ],
+  "summary": {
+    "summary": "In this session, you logged a total expenditure of KES 200, which was spent entirely on transport. Tracking your daily commuting costs is a great step toward managing your overall monthly budget. Keep logging your expenses to stay in full control of your finances.",
+    "breakdown": {
+      "transport": 200
+    },
+    "total_spent": 200,
+    "ways_to_save": [
+      "Travel during off-peak hours to avoid surge matatu fares.",
+      "Walk shorter stage distances whenever you are not in a rush.",
+      "Budget a fixed weekly transport amount in M-Pesa to avoid overspending on daily fares."
+    ]
+  }
+}
